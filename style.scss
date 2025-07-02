@@ -51,7 +51,6 @@ main {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: red;
   gap: 2rem;
   background-color: var(--pri);
 }
@@ -73,19 +72,44 @@ nav {
     // color: var(--ternary2);
   }
 
-  button {
-    font-family: aeonik;
-    font-size: 1.2rem;
-    font-weight: 700;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    background-color: #96eaef;
-    color: black;
-    border: none;
-    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  .theme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    gap: 7px;
+    padding: 5px 6px;
+    object-fit: cover;
+    cursor: pointer;
+    background-color: #71c9ce;
+    // width: 50px;
 
-    &:active {
-      transform: scale(0.9);
+    .ri-moon-line {
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.2rem;
+      color: black;
+      border: none;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    .ri-sun-line {
+      font-size: 1.5rem;
+      font-weight: 700;
+      padding: 0.2rem;
+      background-color: #e3fdfd;
+      border-radius: 50%;
+      color: black;
+      border: none;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
 }
@@ -118,27 +142,27 @@ nav {
 
     h2 {
       font-size: 2.7vw;
-    font-weight: 400;
+      font-weight: 400;
     }
   }
 
-  .right{
+  .right {
     padding-right: 10px;
 
-    h1{
+    h1 {
       font-size: 2.7vw;
       font-weight: 900;
     }
-    
-    h2{
-     font-size: 2.2vw;
-     font-weight: 400;
-     margin-bottom: 1.2rem;
+
+    h2 {
+      font-size: 2.1vw;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
     }
 
-    p{
+    // p{
 
-    }
+    // }
   }
 }
 
@@ -196,12 +220,12 @@ nav {
       background-color: rgb(249, 50, 89);
       padding: 10px 25px;
       border-radius: 6px;
+      outline: none;
+      border: none;
+      font-size: 1.5vw;
+      color: var(--ternary);
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-
-      &:hover {
-        transform: scale(1.1);
-      }
     }
   }
 }
@@ -476,7 +500,7 @@ nav {
 }
 
 .pomodoro-timerPage {
-  display: flex;
+  display: none;
   background: url("/content/c629a813b3561cfa40dd.jpg");
   background-position: center;
   background-size: cover;

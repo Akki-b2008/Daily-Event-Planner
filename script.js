@@ -239,7 +239,158 @@ function pomodoroTimer() {
   });
   updateTimer();
 }
-
 pomodoroTimer();
 
+function weather() {
+  // let user = prompt('enter any city')
+  console.log(CONFIG.API_KEY);
+  let key = CONFIG.API_KEY;
+  // let city = user.toLowerCase();
+  let city = "Bhopal";
 
+  let properDate = document.querySelector(".weather-sec .left h3");
+  let completeTime = document.querySelector(".weather-sec .left h1");
+  let location = document.querySelector(".weather-sec .left h2");
+  let Temp = document.querySelector(".weather-sec .right h1");
+  let Condition = document.querySelector(".weather-sec .right h2");
+  let HeatIndex = document.querySelector(".weather-sec .right .p1");
+  let Humidity = document.querySelector(".weather-sec .right .p2");
+  let Wind = document.querySelector(".weather-sec .right .p3");
+
+  let data = null;
+
+  async function weatherAPICall() {
+    try {
+      let res = await fetch(
+        `https://api.weatherapi.com/v1/current.json?key=${key}&q=${city}&aqi=no`
+      );
+      data = await res.json();
+    } catch (error) {
+      console.log(error);
+    }
+
+    Temp.innerHTML = `${data.current.temp_c} °C`;
+    Condition.innerHTML = `${data.current.condition.text}`;
+    HeatIndex.innerHTML = `Heat Index ${data.current.heatindex_c}`;
+    Humidity.innerHTML = `Humidity ${data.current.humidity}%`;
+    Wind.innerHTML = `Wind ${data.current.wind_kph} Kph`;
+  }
+  weatherAPICall();
+
+  function timeDate() {
+    let week = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+
+    let months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    let date = new Date();
+
+    let hour = date.getHours();
+    let minutes = date.getMinutes();
+    let seconds = date.getSeconds();
+    let month = months[date.getMonth()];
+    let dayOfWeek = week[date.getDay()];
+    let year = date.getFullYear();
+    let tarik = date.getDate();
+
+    properDate.innerHTML = `${tarik} ${month}, ${year}`;
+    location.innerHTML = `${data?.location?.name}`;
+
+    if (hour >= 12) {
+      completeTime.innerHTML = `${dayOfWeek}, ${String(hour-12).padStart(
+        "2",
+        "0"
+      )}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+        2,
+        "0"
+      )} PM`;
+    } else {
+      completeTime.innerHTML = `${dayOfWeek}, ${String(hour).padStart(
+        2,
+        "0"
+      )}:${String(minutes).padStart("2", "0")}:${String(seconds).padStart(
+        2,
+        "0"
+      )} AM`;
+    }
+
+    setTimeout(() => {
+      timeDate();
+    }, 1000);
+  }
+
+  timeDate();
+}
+
+weather();
+
+let body = document.querySelector("body");
+let theme = document.querySelector("nav .theme");
+let sun = document.querySelector("nav .theme .ri-sun-line");
+let moon = document.querySelector("nav .theme .ri-moon-line");
+let icon1 = document.querySelector(".theme #icon1");
+let icon2 = document.querySelector(".theme #icon2");
+
+// theme.addEventListener("click", () => {
+//   // sun.classList.toggle("sun");
+
+//   if (icon1.classList.contains("ri-sun-line")) {
+//     icon1.classList.remove("ri-sun-line");
+//     icon1.classList.add("ri-moon-line");
+
+//     icon2.classList.remove("ri-moon-line");
+//     icon2.classList.add("ri-sun-line");
+
+//     body.style.backgroundColor = "black"; // Dark mode
+//   } else {
+//     icon1.classList.remove("ri-moon-line");
+//     icon1.classList.add("ri-sun-line");
+
+//     icon2.classList.remove("ri-sun-line");
+//     icon2.classList.add("ri-moon-line");
+
+//     body.style.backgroundColor = "white"; // Light mode
+//   }
+  
+// });
+
+
+theme.addEventListener("click", () => {
+  if (icon1.classList.contains("ri-sun-line")) {
+    icon1.classList.remove("ri-sun-line");
+    icon1.classList.add("ri-moon-line");
+
+    icon2.classList.remove("ri-moon-line");
+    icon2.classList.add("ri-sun-line");
+
+    body.style.backgroundColor = "black"; // Dark mode
+  } else {
+    icon1.classList.remove("ri-moon-line");
+    icon1.classList.add("ri-sun-line");
+
+    icon2.classList.remove("ri-sun-line");
+    icon2.classList.add("ri-moon-line");
+
+    body.style.backgroundColor = "white"; // Light mode
+  }
+});

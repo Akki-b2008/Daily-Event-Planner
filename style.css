@@ -47,7 +47,6 @@ main {
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  background-color: red;
   gap: 2rem;
   background-color: var(--pri);
 }
@@ -67,18 +66,40 @@ nav h2 {
   font-weight: 700;
   font-size: 2rem;
 }
-nav button {
-  font-family: aeonik;
-  font-size: 1.2rem;
+nav .theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  gap: 7px;
+  padding: 5px 6px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+  background-color: #71c9ce;
+}
+nav .theme .ri-moon-line {
+  font-size: 1.5rem;
   font-weight: 700;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  background-color: #96eaef;
+  padding: 0.2rem;
   color: black;
   border: none;
   transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
-nav button:active {
+nav .theme .ri-moon-line:active {
+  transform: scale(0.9);
+}
+nav .theme .ri-sun-line {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 0.2rem;
+  background-color: #e3fdfd;
+  border-radius: 50%;
+  color: black;
+  border: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+nav .theme .ri-sun-line:active {
   transform: scale(0.9);
 }
 
@@ -117,10 +138,11 @@ nav button:active {
   font-weight: 900;
 }
 .weather-sec .right h2 {
-  font-size: 2.2vw;
+  font-size: 2.1vw;
   font-weight: 400;
   margin-bottom: 1.2rem;
 }
+
 .cards-sec {
   width: 100%;
   height: 40%;
@@ -171,11 +193,12 @@ nav button:active {
   background-color: rgb(249, 50, 89);
   padding: 10px 25px;
   border-radius: 6px;
+  outline: none;
+  border: none;
+  font-size: 1.5vw;
+  color: var(--ternary);
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-.fullElems nav button:hover {
-  transform: scale(1.1);
 }
 
 .to-do-listPage {
@@ -423,7 +446,7 @@ nav button:active {
 }
 
 .pomodoro-timerPage {
-  display: flex;
+  display: none;
   background: url("/content/c629a813b3561cfa40dd.jpg");
   background-position: center;
   background-size: cover;
