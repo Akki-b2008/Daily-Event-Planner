@@ -137,17 +137,109 @@ function motivationQuotes() {
 }
 motivationQuotes();
 
-let icon = document.querySelector(".fa-arrow-rotate-right");
-isAnimating = false;
+function pomodoroTimer() {
+  let icon = document.querySelector(".fa-arrow-rotate-right");
+  let isAnimating = false;
 
-icon.addEventListener("click", () => {
-  if (isAnimating) return;
-  isAnimating = true;
-  icon.classList.remove("rotate");
-  void icon.offsetWidth;
-  icon.classList.add("rotate");
-  setTimeout(() => {
+  let totalSeconds = 60 * 60;
+  let timerInterval = null;
+  let currentMode = "focus";
+
+  let minutesH1 = document.querySelector(".pomodoro-timer-card .center-sec h1");
+
+  let startTimer = document.querySelector(
+    ".pomodoro-timer-card .bottom-sec .btn-1"
+  );
+
+  let pauseTimer = document.querySelector(
+    ".pomodoro-timer-card .bottom-sec .btn-2"
+  );
+
+  let focusTime = document.querySelector(
+    ".pomodoro-timer-card .top-sec .focus"
+  );
+
+  let shortBreakTime = document.querySelector(
+    ".pomodoro-timer-card .top-sec .short-break"
+  );
+
+  let longBreakTime = document.querySelector(
+    ".pomodoro-timer-card .top-sec .long-break"
+  );
+
+  focusTime.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    totalSeconds = 60 * 60;
+    currentMode = "focus";
+    updateTimer();
+  });
+
+  shortBreakTime.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    totalSeconds = 10 * 60;
+    currentMode = "short-break";
+    updateTimer();
+  });
+
+  longBreakTime.addEventListener("click", () => {
+    clearInterval(timerInterval);
+    totalSeconds = 20 * 60;
+    currentMode = "long-break";
+    updateTimer();
+  });
+
+  function updateTimer() {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    minutesH1.innerHTML = `${String(minutes).padStart("2", "0")}:${String(
+      seconds
+    ).padStart("2", "0")}`;
+  }
+
+  function startTimerFnc() {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      if (totalSeconds > 0) {
+        totalSeconds--;
+        updateTimer();
+      } else {
+        clearInterval(timerInterval);
+        updateTimer();
+      }
+    }, 1000);
+  }
+
+  startTimer.addEventListener("click", startTimerFnc);
+
+  pauseTimer.addEventListener("click", () => {
+    clearInterval(timerInterval);
+  });
+
+  icon.addEventListener("click", () => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // Animation logic
     icon.classList.remove("rotate");
-    isAnimating = false;
-  }, 1000);
-});
+    void icon.offsetWidth;
+    icon.classList.add("rotate");
+
+    // Reset logic
+    if (currentMode === "focus") totalSeconds = 60 * 60;
+    if (currentMode === "short-break") totalSeconds = 5 * 60;
+    if (currentMode === "long-break") totalSeconds = 15 * 60;
+
+    updateTimer();
+    clearInterval(timerInterval);
+
+    setTimeout(() => {
+      icon.classList.remove("rotate");
+      isAnimating = false;
+    }, 1000);
+  });
+  updateTimer();
+}
+
+pomodoroTimer();
+
+

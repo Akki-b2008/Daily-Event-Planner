@@ -7,10 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 
 </head>
 
@@ -21,8 +18,21 @@
             <button>Change theme</button>
         </nav>
         <section class="weather-sec">
-            <h3>8 May,2025</h3>
-            <h1>Thursday, 04:30:08 PM</h1>
+            <div class="left">
+                <h3>8 May, 2025</h3>
+                <h1>Thursday, 04:30:08 PM</h1>
+                <h2>Gwalior (MP)</h2>
+            </div>
+
+            <div class="right">
+                <h1>26.4 °C</h1>
+                <h2>Party Cloudy</h2>
+
+                <p class="p1">Heat Index : 40%</p>
+                <p class="p2">Humidity: 9%</p>
+                <p class="p3">Wind:23 km/h</p>
+            </div>
+
         </section>
         <section class="cards-sec">
             <section class="todo cards" id="0">
@@ -121,16 +131,17 @@
         </nav>
         <div class="pomodoro-timer-card">
             <div class="top-sec">
-             <h2 tabindex="0" class="focus">focus time</h2>
-             <h2 tabindex="1" class="short-break">short break</h2>
-             <h2 tabindex="2" class="long-break">long break</h2>
+                <h2 tabindex="0" class="tabclass focus">focus time</h2>
+                <h2 tabindex="1" class="tabclass short-break">short break</h2>
+                <h2 tabindex="2" class="tabclass long-break">long break</h2>
             </div>
             <div class="center-sec">
-                <h1>25:00</h1>
+                <h1>60:00</h1>
             </div>
             <div class="bottom-sec">
-                <button>start</button>
-                 <i class="fa-solid fa-arrow-rotate-right"></i>
+                <button class="btn-1">start</button>
+                <button class="btn-2">pause</button>
+                <i class="fa-solid fa-arrow-rotate-right"></i>
             </div>
         </div>
     </div>
