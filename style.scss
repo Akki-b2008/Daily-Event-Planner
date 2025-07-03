@@ -3,11 +3,14 @@
   --sec: #cbf1f5;
   --ternary: #e3fdfd;
   --ternary2: #129990;
+  --red: #f3345afd;
+  --white: #ffffff;
+  --black: #000000;
 }
 
 @font-face {
   font-family: "playlist caps";
-  src: url(/content/Playlist\ Caps.otf);
+  src: url(./content/Playlist\ Caps.otf);
 }
 
 @font-face {
@@ -45,6 +48,10 @@ body {
   display: none;
 }
 
+.wrapper {
+  display: flex;
+}
+
 main {
   width: 100%;
   height: 100vh;
@@ -62,54 +69,32 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
-  background-color: var(--ternary);
+  background-color: var(--ternary2);
   border-radius: 12px;
 
   h2 {
     font-family: aeonik;
     font-weight: 700;
     font-size: 2rem;
-    // color: var(--ternary2);
+    color: var(--sec);
   }
 
   .theme {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100px;
-    gap: 7px;
+    border-radius: 6px;
     padding: 5px 6px;
-    object-fit: cover;
     cursor: pointer;
-    background-color: #71c9ce;
-    // width: 50px;
+    background-color: var(--sec);
+    transition: all 0.5s ease;
 
-    .ri-moon-line {
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 0.2rem;
-      color: black;
-      border: none;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-
-      &:active {
-        transform: scale(0.9);
-      }
+    h2 {
+      font-size: 1.1rem;
+      padding: 5px;
+      color: var(--black);
+      pointer-events: none;
     }
 
-    .ri-sun-line {
-      font-size: 1.5rem;
-      font-weight: 700;
-      padding: 0.2rem;
-      background-color: #e3fdfd;
-      border-radius: 50%;
-      color: black;
-      border: none;
-      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-
-      &:active {
-        transform: scale(0.9);
-      }
+    &:active {
+      transform: scale(0.8);
     }
   }
 }
@@ -125,7 +110,7 @@ nav {
   font-family: aeonik;
   display: flex;
   justify-content: space-between;
-  color: var(--ternary);
+  color: var(--sec);
 
   .left {
     h3 {
@@ -211,19 +196,20 @@ nav {
   background-color: var(--pri);
 
   nav {
-    background-color: var(--sec);
+    background-color: var(--ternary2);
+
     h2 {
       font-size: 2vw;
     }
 
     button {
-      background-color: rgb(249, 50, 89);
+      background-color: var(--red);
       padding: 10px 25px;
       border-radius: 6px;
       outline: none;
       border: none;
       font-size: 1.5vw;
-      color: var(--ternary);
+      color: var(--black);
       font-weight: 700;
       cursor: pointer;
     }
@@ -270,7 +256,7 @@ nav {
           outline: none;
 
           &::placeholder {
-            color: black;
+            color: var(--black);
           }
         }
 
@@ -286,7 +272,7 @@ nav {
           outline: none;
 
           &::placeholder {
-            color: black;
+            color: var(--black);
           }
         }
 
@@ -303,6 +289,7 @@ nav {
           label {
             font-weight: 600;
             cursor: pointer;
+            color: var(--ternary);
           }
         }
 
@@ -312,7 +299,7 @@ nav {
           font-weight: 700;
           border-radius: 4px;
           border: none;
-          background-color: rgb(249, 50, 89);
+          background-color: var(--red);
           cursor: pointer;
           transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
           cursor: pointer;
@@ -339,7 +326,7 @@ nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-color: white;
+        background-color: var(--white);
         border-radius: 8px;
         padding: 16px;
         font-size: 1.2vw;
@@ -351,8 +338,8 @@ nav {
           font-size: 1.3rem;
 
           span {
-            background-color: crimson;
-            color: white;
+            background-color: var(--red);
+            color: var(--white);
             padding: 6px;
             border-radius: 50px;
             font-size: 14px;
@@ -373,7 +360,9 @@ nav {
           font-weight: 700;
           border-radius: 8px;
           border: none;
-          background-color: var(--ternary2);
+          columns: var(--red);
+          background-color: var(--pri);
+          background-color: var(--red);
           transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 
           &:active {
@@ -426,7 +415,7 @@ nav {
       margin-top: 16px;
       padding-left: 12px;
       font-weight: 400;
-      color: var(--ternary2);
+      color: var(--red);
     }
   }
 }
@@ -453,9 +442,9 @@ nav {
       gap: 2rem;
       padding: 10px;
       border-radius: 16px;
-      background: rgba(0, 128, 128, 0.552);
+      // background: var(--ternary2);
       border-radius: 15px;
-      box-shadow: 0 0 50px 5px rgba(5, 28, 31, 0.933);
+      box-shadow: 0 0 50px 5px var(--black);
 
       h2 {
         background-color: var(--sec);
@@ -483,7 +472,7 @@ nav {
       .center-sec {
         padding: 1.5rem;
         h1 {
-          color: white;
+          color: var(--white);
         }
       }
 
@@ -510,7 +499,7 @@ nav {
     background: none;
     h2 {
       font-family: playlist caps;
-      color: whitesmoke;
+      color: var(--white);
       font-size: 3rem;
     }
   }
@@ -526,10 +515,10 @@ nav {
     .top-sec {
       display: flex;
       gap: 1.3rem;
-      color: whitesmoke;
+      color: var(--white);
 
       h2 {
-        border: 1px solid whitesmoke;
+        border: 1px solid var(--white);
         padding: 10px 1rem;
         border-radius: 50px;
         font-weight: 600;
@@ -538,49 +527,28 @@ nav {
       }
 
       .focus:focus {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-      }
-
-      .focus:hover {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-        // transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+        background-color: var(--white);
+        border: 1px solid var(--white);
+        color: var(--black);
       }
 
       .short-break:focus {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-      }
-
-      .short-break:hover {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-        // transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+        background-color: var(--white);
+        border: 1px solid var(--white);
+        color: var(--black);
       }
 
       .long-break:focus {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-      }
-
-      .long-break:hover {
-        background-color: white;
-        border: 1px solid whitesmoke;
-        color: rgb(2, 2, 2);
-        // transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+        background-color: var(--white);
+        border: 1px solid var(--white);
+        color: var(--black);
       }
     }
     .center-sec {
       font-size: 4rem;
       h1 {
         font-weight: 700;
-        color: whitesmoke;
+        color: var(--white);
       }
     }
 
@@ -597,10 +565,13 @@ nav {
         border: none;
         font-size: 1.5rem;
         font-weight: 500;
+        &:active {
+          transform: scale(0.85);
+        }
       }
 
       i {
-        color: whitesmoke;
+        color: var(--white);
         font-size: 2rem;
       }
 
@@ -609,8 +580,8 @@ nav {
       }
       button:hover {
         background: none;
-        border: 1px solid whitesmoke;
-        color: whitesmoke;
+        border: 1px solid var(--white);
+        color: var(--white);
         transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
       }
     }

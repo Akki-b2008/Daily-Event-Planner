@@ -317,7 +317,7 @@ function weather() {
     location.innerHTML = `${data?.location?.name}`;
 
     if (hour >= 12) {
-      completeTime.innerHTML = `${dayOfWeek}, ${String(hour-12).padStart(
+      completeTime.innerHTML = `${dayOfWeek}, ${String(hour - 12).padStart(
         "2",
         "0"
       )}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
@@ -344,53 +344,29 @@ function weather() {
 
 weather();
 
-let body = document.querySelector("body");
 let theme = document.querySelector("nav .theme");
-let sun = document.querySelector("nav .theme .ri-sun-line");
-let moon = document.querySelector("nav .theme .ri-moon-line");
-let icon1 = document.querySelector(".theme #icon1");
-let icon2 = document.querySelector(".theme #icon2");
+let rootElement = document.documentElement;
+let flag = 0;
 
-// theme.addEventListener("click", () => {
-//   // sun.classList.toggle("sun");
-
-//   if (icon1.classList.contains("ri-sun-line")) {
-//     icon1.classList.remove("ri-sun-line");
-//     icon1.classList.add("ri-moon-line");
-
-//     icon2.classList.remove("ri-moon-line");
-//     icon2.classList.add("ri-sun-line");
-
-//     body.style.backgroundColor = "black"; // Dark mode
-//   } else {
-//     icon1.classList.remove("ri-moon-line");
-//     icon1.classList.add("ri-sun-line");
-
-//     icon2.classList.remove("ri-sun-line");
-//     icon2.classList.add("ri-moon-line");
-
-//     body.style.backgroundColor = "white"; // Light mode
-//   }
-  
-// });
-
+//  --pri: #71c9ce;
+//   --sec: #cbf1f5;
+//   --ternary: #e3fdfd;
+//   --ternary2: #129990;
 
 theme.addEventListener("click", () => {
-  if (icon1.classList.contains("ri-sun-line")) {
-    icon1.classList.remove("ri-sun-line");
-    icon1.classList.add("ri-moon-line");
-
-    icon2.classList.remove("ri-moon-line");
-    icon2.classList.add("ri-sun-line");
-
-    body.style.backgroundColor = "black"; // Dark mode
-  } else {
-    icon1.classList.remove("ri-moon-line");
-    icon1.classList.add("ri-sun-line");
-
-    icon2.classList.remove("ri-sun-line");
-    icon2.classList.add("ri-moon-line");
-
-    body.style.backgroundColor = "white"; // Light mode
+  if (flag == 0) {
+    rootElement.style.setProperty("--pri", "#222831");
+    rootElement.style.setProperty("--ternary2", "#393E46");
+    flag = 1;
+  }
+   else if (flag == 1) {
+    rootElement.style.setProperty("--pri", "#090040");
+    rootElement.style.setProperty("--ternary2", "#725CAD");
+    flag = 2;
+  } 
+  else if (flag == 2) {
+    rootElement.style.setProperty("--pri", "#71c9ce");
+    rootElement.style.setProperty("--ternary2", "#129990");
+    flag = 0;
   }
 });
