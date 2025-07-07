@@ -141,7 +141,7 @@ function pomodoroTimer() {
   let icon = document.querySelector(".fa-arrow-rotate-right");
   let isAnimating = false;
 
-  let totalSeconds = 60 * 60;
+  let totalSeconds = 30 * 60;
   let timerInterval = null;
   let currentMode = "focus";
 
@@ -167,24 +167,57 @@ function pomodoroTimer() {
     ".pomodoro-timer-card .top-sec .long-break"
   );
 
+   if (currentMode == "focus") {
+      focusTime.style.backgroundColor = "white";
+      focusTime.style.color = "black";
+      shortBreakTime.style.backgroundColor = "transparent";
+      shortBreakTime.style.color = "white";
+      longBreakTime.style.backgroundColor = "transparent";
+      longBreakTime.style.color = "white";
+    }
   focusTime.addEventListener("click", () => {
-    clearInterval(timerInterval);
-    totalSeconds = 60 * 60;
     currentMode = "focus";
+    if (currentMode == "focus") {
+      focusTime.style.backgroundColor = "white";
+      focusTime.style.color = "black";
+      shortBreakTime.style.backgroundColor = "transparent";
+      shortBreakTime.style.color = "white";
+      longBreakTime.style.backgroundColor = "transparent";
+      longBreakTime.style.color = "white";
+    }
+    clearInterval(timerInterval);
+    totalSeconds = 30 * 60;
+
     updateTimer();
   });
 
   shortBreakTime.addEventListener("click", () => {
-    clearInterval(timerInterval);
-    totalSeconds = 10 * 60;
     currentMode = "short-break";
+    if (currentMode == "short-break") {
+      focusTime.style.backgroundColor = "transparent";
+      focusTime.style.color = "white";
+      shortBreakTime.style.backgroundColor = "white";
+      shortBreakTime.style.color = "black";
+      longBreakTime.style.backgroundColor = "transparent";
+      longBreakTime.style.color = "white";
+    }
+    clearInterval(timerInterval);
+    totalSeconds = 7 * 60;
     updateTimer();
   });
 
   longBreakTime.addEventListener("click", () => {
-    clearInterval(timerInterval);
-    totalSeconds = 20 * 60;
     currentMode = "long-break";
+    if (currentMode == "long-break") {
+      focusTime.style.backgroundColor = "transparent";
+      focusTime.style.color = "white";
+      shortBreakTime.style.backgroundColor = "transparent";
+      shortBreakTime.style.color = "white";
+      longBreakTime.style.backgroundColor = "white";
+      longBreakTime.style.color = "black";
+    }
+    clearInterval(timerInterval);
+    totalSeconds = 15 * 60;
     updateTimer();
   });
 
@@ -225,8 +258,8 @@ function pomodoroTimer() {
     icon.classList.add("rotate");
 
     // Reset logic
-    if (currentMode === "focus") totalSeconds = 60 * 60;
-    if (currentMode === "short-break") totalSeconds = 5 * 60;
+    if (currentMode === "focus") totalSeconds = 30 * 60;
+    if (currentMode === "short-break") totalSeconds = 7 * 60;
     if (currentMode === "long-break") totalSeconds = 15 * 60;
 
     updateTimer();
@@ -358,13 +391,11 @@ theme.addEventListener("click", () => {
     rootElement.style.setProperty("--pri", "#222831");
     rootElement.style.setProperty("--ternary2", "#393E46");
     flag = 1;
-  }
-   else if (flag == 1) {
+  } else if (flag == 1) {
     rootElement.style.setProperty("--pri", "#090040");
     rootElement.style.setProperty("--ternary2", "#725CAD");
     flag = 2;
-  } 
-  else if (flag == 2) {
+  } else if (flag == 2) {
     rootElement.style.setProperty("--pri", "#71c9ce");
     rootElement.style.setProperty("--ternary2", "#129990");
     flag = 0;

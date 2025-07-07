@@ -472,21 +472,6 @@ nav .theme:active {
   font-size: 1.3rem;
   transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.pomodoro-timerPage .pomodoro-timer-card .top-sec .focus:focus {
-  background-color: var(--white);
-  border: 1px solid var(--white);
-  color: var(--black);
-}
-.pomodoro-timerPage .pomodoro-timer-card .top-sec .short-break:focus {
-  background-color: var(--white);
-  border: 1px solid var(--white);
-  color: var(--black);
-}
-.pomodoro-timerPage .pomodoro-timer-card .top-sec .long-break:focus {
-  background-color: var(--white);
-  border: 1px solid var(--white);
-  color: var(--black);
-}
 .pomodoro-timerPage .pomodoro-timer-card .center-sec {
   font-size: 4rem;
 }

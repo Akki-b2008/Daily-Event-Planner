@@ -525,24 +525,6 @@ nav {
         font-size: 1.3rem;
         transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
       }
-
-      .focus:focus {
-        background-color: var(--white);
-        border: 1px solid var(--white);
-        color: var(--black);
-      }
-
-      .short-break:focus {
-        background-color: var(--white);
-        border: 1px solid var(--white);
-        color: var(--black);
-      }
-
-      .long-break:focus {
-        background-color: var(--white);
-        border: 1px solid var(--white);
-        color: var(--black);
-      }
     }
     .center-sec {
       font-size: 4rem;
@@ -596,4 +578,9 @@ nav {
   to {
     transform: rotate(360deg);
   }
+}
+
+
+@media (max-width : 600px) {
+  
 }
